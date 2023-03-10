@@ -153,6 +153,10 @@ func run(ctx context.Context, cfg cmds.Agent, proxy proxy.Proxy) error {
 	}
 
 	if !nodeConfig.AgentConfig.DisableNPC {
+		// in a case where node was pre-created before kubelet starts, npc will run into error when node-address hasn't
+		// been populated back to node. This will exit the process until node is populated with node address.
+		// so sleep 15 seconds before trying to run npc.
+		time.Sleep(time.Second * 15)
 		if err := netpol.Run(ctx, nodeConfig); err != nil {
 			return err
 		}
