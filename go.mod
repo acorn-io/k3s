@@ -16,6 +16,8 @@ replace (
 	github.com/golang/protobuf => github.com/golang/protobuf v1.5.3
 	github.com/googleapis/gax-go/v2 => github.com/googleapis/gax-go/v2 v2.1.1
 	github.com/juju/errors => github.com/k3s-io/nocode v0.0.0-20200630202308-cb097102c09f
+
+	github.com/k3s-io/helm-controller => github.com/acorn-io/helm-controller v0.0.0-20230626182853-bb03cf954008
 	github.com/kubernetes-sigs/cri-tools => github.com/k3s-io/cri-tools v1.26.0-rc.0-k3s1
 	github.com/opencontainers/runc => github.com/opencontainers/runc v1.1.7
 	github.com/opencontainers/runtime-spec => github.com/opencontainers/runtime-spec v1.0.3-0.20220909204839-494a5a6aca78
@@ -114,8 +116,8 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.15
 	github.com/minio/minio-go/v7 v7.0.33
 	github.com/natefinch/lumberjack v2.0.0+incompatible
-	github.com/onsi/ginkgo/v2 v2.9.1
-	github.com/onsi/gomega v1.27.4
+	github.com/onsi/ginkgo/v2 v2.9.4
+	github.com/onsi/gomega v1.27.6
 	github.com/opencontainers/runc v1.1.6
 	github.com/opencontainers/selinux v1.11.0
 	github.com/otiai10/copy v1.7.0
@@ -243,12 +245,12 @@ require (
 	github.com/fvbommel/sortorder v1.0.1 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
-	github.com/go-logr/logr v1.2.3 // indirect
+	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
 	github.com/go-openapi/jsonreference v0.20.1 // indirect
 	github.com/go-openapi/swag v0.22.3 // indirect
-	github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0 // indirect
+	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
@@ -378,12 +380,12 @@ require (
 	go.starlark.net v0.0.0-20200306205701-8dd3e2ee1dd5 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
-	golang.org/x/mod v0.9.0 // indirect
+	golang.org/x/mod v0.10.0 // indirect
 	golang.org/x/oauth2 v0.4.0 // indirect
-	golang.org/x/term v0.6.0 // indirect
+	golang.org/x/term v0.7.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
-	golang.org/x/tools v0.7.0 // indirect
+	golang.org/x/tools v0.8.0 // indirect
 	golang.zx2c4.com/wireguard v0.0.0-20220117163742-e0b8f11489c5 // indirect
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20211230205640-daad0b7ba671 // indirect
 	google.golang.org/api v0.60.0 // indirect
