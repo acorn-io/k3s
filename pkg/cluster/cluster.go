@@ -3,7 +3,9 @@ package cluster
 import (
 	"context"
 	"net/url"
+	"os"
 	"runtime"
+	"strconv"
 	"strings"
 
 	"github.com/k3s-io/k3s/pkg/clientaccess"
@@ -134,8 +136,13 @@ func (c *Cluster) startStorage(ctx context.Context) error {
 	}
 	c.storageStarted = true
 
+	// Having ability to set connection configuration per environment variables
+	datastore := c.config.Datastore
+	datastore.ConnectionPoolConfig.MaxOpen = getEnvOrDefault("K3S_DATASTORE_MAX_OPEN", 5)
+	datastore.ConnectionPoolConfig.MaxIdle = getEnvOrDefault("K3S_DATASTORE_MAX_IDLE", 1)
+
 	// start listening on the kine socket as an etcd endpoint, or return the external etcd endpoints
-	etcdConfig, err := endpoint.Listen(ctx, c.config.Datastore)
+	etcdConfig, err := endpoint.Listen(ctx, datastore)
 	if err != nil {
 		return errors.Wrap(err, "creating storage endpoint")
 	}
@@ -155,4 +162,13 @@ func New(config *config.Control) *Cluster {
 	return &Cluster{
 		config: config,
 	}
+}
+
+func getEnvOrDefault(env string, def int) int {
+	if env := os.Getenv(env); env != "" {
+		if val, err := strconv.Atoi(env); err == nil {
+			return val
+		}
+	}
+	return def
 }
