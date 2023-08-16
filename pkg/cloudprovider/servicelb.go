@@ -490,7 +490,7 @@ func (k *k3s) newDaemonSet(svc *core.Service) (*apps.DaemonSet, error) {
 							Effect:   "NoSchedule",
 						},
 						{
-							Key:      util.ControlPlaneRoleLabelKey,
+							Key:      "taints.acorn.io/workload",
 							Operator: "Exists",
 							Effect:   "NoSchedule",
 						},
