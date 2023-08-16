@@ -489,7 +489,7 @@ func (k *k3s) newDaemonSet(svc *core.Service) (*apps.DaemonSet, error) {
 							Effect:   "NoSchedule",
 						},
 						{
-							Key:      "node-role.kubernetes.io/control-plane",
+							Key:      "taints.acorn.io/workload",
 							Operator: "Exists",
 							Effect:   "NoSchedule",
 						},
