@@ -47,7 +47,7 @@ const (
 )
 
 var (
-	DefaultLBImage = "rancher/klipper-lb:v0.4.4"
+	DefaultLBImage = "alpine/socat:1.7.4.4"
 )
 
 func (k *k3s) Register(ctx context.Context,
@@ -513,8 +513,15 @@ func (k *k3s) newDaemonSet(svc *core.Service) (*apps.DaemonSet, error) {
 	for _, port := range svc.Spec.Ports {
 		portName := fmt.Sprintf("lb-%s-%d", strings.ToLower(string(port.Protocol)), port.Port)
 		container := core.Container{
-			Name:            portName,
-			Image:           k.LBImage,
+			Name:  portName,
+			Image: k.LBImage,
+			Command: []string{
+				"/bin/sh",
+				"-c",
+			},
+			Args: []string{
+				"socat TCP-LISTEN:${SRC_PORT},fork TCP:${DEST_IPS}:${DEST_PORT}",
+			},
 			ImagePullPolicy: core.PullIfNotPresent,
 			Ports: []core.ContainerPort{
 				{
